@@ -1,0 +1,37 @@
+.rwmb-rating {
+	border: none;
+	float: left;
+}
+
+.rwmb-rating > input { display: none; }
+.rwmb-rating > label:before {
+	margin: 5px;
+	font-size: 1.25em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
+}
+
+.rwmb-rating > .half:before {
+	content: "\f089";
+	position: absolute;
+}
+
+.rwmb-rating > label {
+	color: #ddd;
+	float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rwmb-rating > input:checked ~ label, /* show gold star when clicked */
+.rwmb-rating:not(:checked) > label:hover, /* hover current star */
+.rwmb-rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rwmb-rating > input:checked + label:hover, /* hover current star when changing rating */
+.rwmb-rating > input:checked ~ label:hover,
+.rwmb-rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rwmb-rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+.rwmb-rating input[type=radio]:checked+label:before {
+	color: unset;
+}
